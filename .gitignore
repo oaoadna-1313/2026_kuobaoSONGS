@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+*.txt
+check_*.py
+inspect_*.py
+extract_*.py
+box_detection_test.py

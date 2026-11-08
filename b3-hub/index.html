@@ -45,64 +45,43 @@
   </script>
   
   <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f5f9;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
-    }
-    
-    .glass-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    
-    /* Subtle spinning vinyl for preview indicator */
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .animate-spin-slow {
-      animation: spin-slow 8s linear infinite;
-    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-orange-100 selection:text-orange-900">
 
-  <!-- ==================== STICKY HEADER (yuesilongmen-web-title-spec) ==================== -->
+  <!-- ==================== STICKY HEADER ==================== -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Brand & Title (閱思龍門標準品牌標題) -->
+      <!-- Brand & Title -->
       <div class="flex items-center space-x-3">
-        <a href="#hero" class="flex items-center space-x-2 group" title="返回好歌總覽頂端">
-          <!-- 方形紅印 SSS_Stamp02.png (維持純方形，嚴禁圓形裁切) -->
-          <img src="assets/SSS_Stamp02.png" alt="學思軒" class="w-10 h-10 object-contain shadow-sm group-hover:rotate-12 transition-transform duration-300">
+        <a href="#hero" class="flex items-center space-x-2.5 group" title="返回好歌總覽頂端">
+          <img src="assets/SSS_Stamp02.png" onerror="this.onerror=null; this.src='../assets/SSS_Stamp02.png';" alt="學思軒" class="w-10 h-10 object-contain shadow-sm group-hover:rotate-12 transition-transform duration-300">
           <div>
             <div class="flex items-center space-x-2">
               <span class="font-serif font-bold text-lg sm:text-xl text-slate-900 tracking-wide">歌SONG國文</span>
-              <span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-200 shadow-xs">八上國文・第三冊每課好歌總目錄</span>
+              <span class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200 shadow-xs">八上國文・第三冊每課好歌總目錄</span>
             </div>
             <p class="text-[11px] text-slate-500 font-medium hidden md:block">聆聽旋律與文字的交響・穿梭國文第三冊的音樂文學殿堂</p>
           </div>
         </a>
       </div>
 
-      <!-- Quick Action Controls & Quick Jump -->
+      <!-- Quick Action Controls & Back to Total Directory -->
       <div class="flex items-center space-x-2 sm:space-x-3">
         <div class="hidden lg:flex items-center gap-1.5 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200">
           <i class="fa-solid fa-music text-orange-600"></i>
           <span>收錄全冊 <strong>6</strong> 大課次・共 <strong>19</strong> 首文學好歌</span>
         </div>
+        <a href="../index.html" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 shadow-xs cursor-pointer active:scale-95" title="回到國文一～六冊總目錄">
+          <i class="fa-solid fa-house"></i>
+          <span>回總目錄</span>
+        </a>
         <a href="#lessons-container" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-orange-600 text-white hover:bg-orange-700 shadow-sm cursor-pointer active:scale-95">
           <i class="fa-solid fa-layer-group"></i>
           <span>瀏覽全部課次</span>
@@ -114,36 +93,24 @@
   <!-- ==================== MAIN CONTENT ==================== -->
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-8" id="hero">
 
-    <!-- Top Hero Banner (Orange Theme) -->
+    <!-- Top Hero Banner -->
     <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-stone-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-      <!-- Background Decorative Lights -->
       <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute right-1/3 -top-10 w-56 h-56 bg-amber-300/20 rounded-full blur-2xl pointer-events-none"></div>
 
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 relative z-10">
-        <!-- Left: Logo Banner & Titles -->
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
           <div class="flex items-center gap-3 shrink-0">
-            <!-- 黃框: 國文寶典 baoden.png -->
-            <img src="assets/baoden.png" alt="國文寶典" class="h-14 sm:h-16 w-auto object-contain rounded-2xl shadow-lg border border-white/20 bg-white/10 p-1">
-            <!-- 紅框: 歌SONG國文 badge-songlogo.PNG -->
-            <img src="assets/badge-songlogo.PNG" alt="歌SONG國文" class="h-10 sm:h-12 w-auto object-contain filter drop-shadow-lg">
+            <img src="assets/baoden.png" onerror="this.onerror=null; this.src='../assets/baoden.png';" alt="國文寶典" class="h-14 sm:h-16 w-auto object-contain rounded-2xl shadow-lg border border-white/20 bg-white/10 p-1">
+            <img src="assets/badge-songlogo.PNG" onerror="this.onerror=null; this.src='../assets/badge-songlogo.PNG';" alt="歌SONG國文" class="h-10 sm:h-12 w-auto object-contain filter drop-shadow-lg">
           </div>
           <div class="border-t sm:border-t-0 sm:border-l border-white/20 pt-3 sm:pt-0 sm:pl-5">
             <div class="flex items-center gap-2 mb-1.5">
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20 text-amber-200 border border-white/20 backdrop-blur-xs">
-                翰林八上國文全冊完整整合
-              </span>
-              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-400 text-stone-900 shadow-xs">
-                互動教學平台入口
-              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/20 text-amber-200 border border-white/20 backdrop-blur-xs">翰林八上國文全冊完整整合</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-400 text-stone-900 shadow-xs">互動教學平台入口</span>
             </div>
-            <h1 class="text-xl sm:text-2xl md:text-3xl font-serif font-black text-white tracking-wide drop-shadow-sm">
-              國文第三冊・每課好歌互動教學總目錄
-            </h1>
-            <p class="text-xs sm:text-sm text-orange-100/95 mt-1.5 max-w-2xl leading-relaxed">
-              結合八年級上學期課文經典名篇，精選 19 首古典韻味與現代靈魂交會的跨界音樂好歌。提供沉浸式擬真黑膠唱盤動態播放、依原學習單向量精準挖洞練習、以及教用螢光筆深度核心解答，讓國文學習在優美旋律中昇華。
-            </p>
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-serif font-black text-white tracking-wide drop-shadow-sm">國文第三冊・每課好歌互動教學總目錄</h1>
+            <p class="text-xs sm:text-sm text-orange-100/95 mt-1.5 max-w-2xl leading-relaxed">結合八年級上學期課文經典名篇，精選 19 首古典韻味與現代靈魂交會的跨界音樂好歌。提供沉浸式擬真黑膠唱盤動態播放、依原學習單向量精準挖洞練習、以及教用螢光筆深度核心解答，讓國文學習在優美旋律中昇華。</p>
           </div>
         </div>
       </div>
@@ -152,94 +119,77 @@
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6 pt-6 border-t border-white/15">
         <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/15 hover:bg-white/15 transition-all">
           <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-lg bg-orange-500/30 flex items-center justify-center text-amber-200 text-lg">
-              <i class="fa-solid fa-book-open"></i>
-            </div>
-            <div>
-              <div class="text-xl sm:text-2xl font-bold font-serif text-white">6 大課次</div>
-              <div class="text-[11px] text-orange-100/80">八上名家名篇精選</div>
-            </div>
+            <div class="w-9 h-9 rounded-lg bg-orange-500/30 flex items-center justify-center text-amber-200 text-lg"><i class="fa-solid fa-book-open"></i></div>
+            <div><div class="text-xl sm:text-2xl font-bold font-serif text-white">6 大課次</div><div class="text-[11px] text-orange-100/80">八年級上學期名篇精選</div></div>
           </div>
         </div>
         <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/15 hover:bg-white/15 transition-all">
           <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-lg bg-amber-500/30 flex items-center justify-center text-amber-200 text-lg">
-              <i class="fa-solid fa-compact-disc"></i>
-            </div>
-            <div>
-              <div class="text-xl sm:text-2xl font-bold font-serif text-white">19 首好歌</div>
-              <div class="text-[11px] text-orange-100/80">橫跨古典與現代金曲</div>
-            </div>
+            <div class="w-9 h-9 rounded-lg bg-amber-500/30 flex items-center justify-center text-amber-200 text-lg"><i class="fa-solid fa-compact-disc"></i></div>
+            <div><div class="text-xl sm:text-2xl font-bold font-serif text-white">19 首好歌</div><div class="text-[11px] text-orange-100/80">橫跨古典與現代金曲</div></div>
           </div>
         </div>
         <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/15 hover:bg-white/15 transition-all">
           <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-lg bg-emerald-500/30 flex items-center justify-center text-emerald-200 text-lg">
-              <i class="fa-solid fa-globe"></i>
-            </div>
-            <div>
-              <div class="text-xl sm:text-2xl font-bold font-serif text-white">25 個網頁</div>
-              <div class="text-[11px] text-orange-100/80">課次總覽＋單曲獨立頁</div>
-            </div>
+            <div class="w-9 h-9 rounded-lg bg-emerald-500/30 flex items-center justify-center text-emerald-200 text-lg"><i class="fa-solid fa-globe"></i></div>
+            <div><div class="text-xl sm:text-2xl font-bold font-serif text-white">25 個網頁</div><div class="text-[11px] text-orange-100/80">課次總覽＋單曲獨立頁</div></div>
           </div>
         </div>
         <div class="bg-white/10 backdrop-blur-sm rounded-xl p-3 border border-white/15 hover:bg-white/15 transition-all">
           <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-lg bg-rose-500/30 flex items-center justify-center text-rose-200 text-lg">
-              <i class="fa-solid fa-file-pdf"></i>
-            </div>
-            <div>
-              <div class="text-xl sm:text-2xl font-bold font-serif text-white">19 份學習單</div>
-              <div class="text-[11px] text-orange-100/80">向量挖洞學教用 PDF</div>
-            </div>
+            <div class="w-9 h-9 rounded-lg bg-rose-500/30 flex items-center justify-center text-rose-200 text-lg"><i class="fa-solid fa-file-pdf"></i></div>
+            <div><div class="text-xl sm:text-2xl font-bold font-serif text-white">19 份學習單</div><div class="text-[11px] text-orange-100/80">向量挖洞學教用 PDF</div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ==================== SEARCH & QUICK FILTER BAR ==================== -->
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 sticky top-20 z-40">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        
-        <!-- Filter Tabs -->
-        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none" id="filterTabs">
-          <button onclick="filterLessons('all')" data-filter="all" class="filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-orange-600 text-white shadow-xs">
-            全部課次 (19曲)
-          </button>
-          <button onclick="filterLessons('L01')" data-filter="L01" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">
-            L01 田園之秋選 (4)
-          </button>
-          <button onclick="filterLessons('L02')" data-filter="L02" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">
-            L02 古詩選 (4)
-          </button>
-          <button onclick="filterLessons('L03')" data-filter="L03" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">
-            L03 下雨天真好 (3)
-          </button>
-          <button onclick="filterLessons('L04')" data-filter="L04" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">
-            L04 愛蓮說 (3)
-          </button>
-          <button onclick="filterLessons('L05')" data-filter="L05" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">
-            L05 生命中的碎珠 (2)
-          </button>
-          <button onclick="filterLessons('L06')" data-filter="L06" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200">
-            L06 鳥 (3)
-          </button>
+    <!-- ==================== SEARCH & QUICK FILTER BAR (Two-row / Wrap layout) ==================== -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5 space-y-3.5">
+      <!-- Row 1: Filter Title + Search Input -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-700">
+          <i class="fa-solid fa-filter text-orange-600"></i>
+          <span>課次快速篩選：</span>
         </div>
-
         <!-- Search Input -->
-        <div class="relative w-full md:w-72 shrink-0">
+        <div class="relative w-full sm:w-80 shrink-0">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
           <input type="text" id="searchInput" oninput="handleSearch()" placeholder="搜尋歌名、歌手、風格標籤..." class="w-full pl-9 pr-8 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all">
           <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs p-1">
             <i class="fa-solid fa-circle-xmark"></i>
           </button>
         </div>
-
       </div>
 
-      <!-- Current Filter Summary Status -->
-      <div id="statusSummary" class="text-xs text-slate-500 mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
-        <span>正在檢視：<strong id="currentFilterLabel" class="text-slate-800">全部課次</strong> ｜ 呈現 <strong id="songCountDisplay" class="text-orange-600">19</strong> 首文學好歌</span>
+      <!-- Row 2: Filter Tabs (Multi-line flex-wrap, strictly NO horizontal scrollbar) -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100" id="filterTabs">
+        <button onclick="filterLessons('all')" data-filter="all" class="filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-orange-600 text-white shadow-xs cursor-pointer">
+          全部課次 (19曲)
+        </button>
+        <button onclick="filterLessons('B3L01')" data-filter="B3L01" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">
+          01 田園之秋選 (4)
+        </button>
+        <button onclick="filterLessons('B3L02')" data-filter="B3L02" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">
+          02 古詩選 (4)
+        </button>
+        <button onclick="filterLessons('B3L03')" data-filter="B3L03" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">
+          03 下雨天真好 (3)
+        </button>
+        <button onclick="filterLessons('B3L04')" data-filter="B3L04" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">
+          04 愛蓮說 (3)
+        </button>
+        <button onclick="filterLessons('B3L05')" data-filter="B3L05" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">
+          05 生命中的碎珠 (2)
+        </button>
+        <button onclick="filterLessons('B3L06')" data-filter="B3L06" class="filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">
+          06 鳥 (3)
+        </button>
+      </div>
+
+      <!-- Row 3: Current Filter Summary Status -->
+      <div id="statusSummary" class="text-xs text-slate-500 pt-2 border-t border-slate-100 flex items-center justify-between flex-wrap gap-2">
+        <span>正在檢視：<strong id="currentFilterLabel" class="text-slate-800">全部課次</strong> ｜ 呈現 <strong id="songCountDisplay" class="text-orange-600 font-bold">19</strong> 首文學好歌</span>
         <span class="text-[11px] text-slate-400">點擊單曲卡片即可直接進入互動學習頁面</span>
       </div>
     </div>
@@ -247,9 +197,8 @@
     <!-- ==================== LESSONS SHOWCASE CONTAINER ==================== -->
     <div class="space-y-10" id="lessons-container">
 
-      <!-- ==================== LESSON 01 ==================== -->
-      <section id="lesson-L01" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="L01" data-lesson-name="田園之秋選" data-author="陳冠學">
-        <!-- Section Header -->
+      <!-- Lesson Section: B3L01 田園之秋選 -->
+      <section id="lesson-B3L01" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="B3L01" data-lesson-name="田園之秋選" data-author="陳冠學">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div class="flex items-start sm:items-center gap-3.5">
             <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
@@ -258,764 +207,713 @@
             <div>
               <div class="flex flex-wrap items-center gap-2">
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
-                  八上第 01 課・自然生態散文
+                  八上國文・自然散文・田園風光
                 </span>
                 <span class="text-xs font-semibold text-slate-500">作者：陳冠學</span>
               </div>
               <h2 class="text-lg sm:text-xl font-serif font-bold text-slate-900 mt-1">
                 《田園之秋選》秋日田園與驟雨天籟的文學共鳴
               </h2>
-              <p class="text-xs text-slate-600 mt-0.5">
-                結合陳冠學《田園之秋選》課文賞析，聆聽田園之歌、秋天的樹、西北雨與天黑黑的田園樂章，感受農村大自然的磅礡驟雨與純樸生機。
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                結合陳冠學《田園之秋選》課文賞析，聆聽田園之歌、秋天的樹、西北雨與天黑黑的田園樂章，邊聽音樂邊完成歌詞填空與深度鑑賞
               </p>
             </div>
           </div>
-          <!-- Lesson Hub Button -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="../b3l01-autumn/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group">
+          <div class="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <a href="../b3l01-autumn/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group active:scale-95">
               <span>進入課次首頁</span>
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
           </div>
         </div>
 
-        <!-- Songs Grid for L01 -->
+        <!-- Songs Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          <!-- Song 1 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="田園之歌" data-artist="費玉清" data-tag="田園風光・悠然自得">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="田園之歌" data-artist="費玉清" data-tag="田園風光・悠然自得">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
                 <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第一曲</span>
-                <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60">田園風光・悠然自得</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">田園風光・悠然自得</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">田園之歌</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：費玉清 ｜ 陸麗作詞・姚敏作曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">田園之歌</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：費玉清 ｜ 陸麗 詞 ｜ 姚敏 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                費玉清以清澈典雅的嗓音唱出農村雨後的自然與勞動景致，「雨後青天白雲飄」、「菜花泛金潮」，深刻呼應陳冠學遠離塵囂、寄情於純樸田園的自得心境。
+                由陸麗作詞、姚敏作曲，費玉清以清澈典雅的嗓音唱出農村雨後的自然與勞動景致。「雨後青天白雲飄」、「陌上村姑鋤野草」、「菜花泛金潮」、「田裡老農割早稻」，將鄉村的生機與祥和展現得淋漓盡致。歌者發出「我願長留在農村的懷抱，這裡絕沒有都市的煩擾」之深切感嘆，深刻呼應陳冠學《田園之秋選》中對於大自然生機變化的細膩觀察，以及遠離塵囂、寄情於純樸田園的自得心境。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l01-autumn/pastoral-song.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-emerald-800 border border-emerald-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l01-autumn/pastoral-song.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l01-autumn/worksheet-pastoral-song.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l01-autumn/worksheet-pastoral-song.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 2 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我是一棵秋天的樹" data-artist="張雨生／吳青峰" data-tag="秋意哲思・安然自處">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我是一棵秋天的樹" data-artist="張雨生／吳青峰" data-tag="秋意哲思・安然自處">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
                 <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第二曲</span>
-                <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60">秋意哲思・安然自處</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">秋意哲思・安然自處</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">我是一棵秋天的樹</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：張雨生／吳青峰 ｜ 許常德詞・陳志遠曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">我是一棵秋天的樹</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：張雨生／吳青峰 ｜ 許常德 詞 ｜ 陳志遠 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                自況為秋天安靜守著疆土的樹，「因為最美的在心，不在遠處」，深刻呼應西北雨滂沱洗禮後，心靈回歸澄澈、與天地自然安然共處的從容境界。
+                由許常德作詞、陳志遠作曲，張雨生原唱、吳青峰深情演繹。歌曲以第一人稱自況為一棵秋天的樹，「稀少的葉片顯得有些孤獨」、「枯瘦的枝幹少有人來停駐」，然而面對世事匆促與冷暖變遷，秋樹依然「安安靜靜守著小小疆土」、「很有耐心不與命運追逐」，展現出「因為最美的在心，不在遠處」的超然豁達。深刻呼應《田園之秋選》在歷經西北雨滂沱洗禮後，心靈回歸澄澈、與天地自然安然共處的從容境界。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l01-autumn/autumn-tree.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-emerald-800 border border-emerald-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l01-autumn/autumn-tree.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l01-autumn/worksheet-autumn-tree.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l01-autumn/worksheet-autumn-tree.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 3 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="西北雨(台灣童謠)" data-artist="台語囝仔歌" data-tag="鄉土童謠・驟雨生機">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="西北雨(台灣童謠)" data-artist="台語囝仔歌" data-tag="鄉土童謠・驟雨生機">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
                 <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第三曲</span>
-                <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60">鄉土童謠・驟雨生機</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">鄉土童謠・驟雨生機</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">西北雨 (台灣童謠)</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：台語囝仔歌 ｜ 台灣經典唸謠</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">西北雨(台灣童謠)</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：台語囝仔歌 ｜ 葉明龍 詞 ｜ 黃敏 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                鯽仔魚娶親、土虱嫂做媒人、火金姑照路，活潑童趣生動刻畫夏日午後西北雨傾盆而下的逗趣景致，完美呼應課文中雷聲隆隆、大雨滂沱後的蓬勃生機。
+                台灣家喻戶曉的經典鄉土童謠。全曲以節奏輕快、生動活潑的閩南語唸謠，描摹夏日午後西北雨傾盆而下的逗趣景致。第一段將台灣水澤常見動物擬人化：鯽仔魚娶親、鮕鮐兄打鑼鼓、土虱嫂當媒人婆、火金姑（螢火蟲）在昏暗雨幕中提燈照路；第二段則寫白鷺鷥冒雨翻山越嶺、跌倒後求助土地公婆，為故事帶來安定人心的力量。完美呼應陳冠學《田園之秋選》中描寫夏日午後西北雨「雷聲隆隆，電光閃閃，大雨滂沱」之後，大地被洗滌一新、處處充滿蓬勃生機的壯闊奇景。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l01-autumn/northwest-rain.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-emerald-800 border border-emerald-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l01-autumn/northwest-rain.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l01-autumn/worksheet-northwest-rain.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l01-autumn/worksheet-northwest-rain.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 4 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="天黑黑(台灣童謠)" data-artist="台語囝仔歌 / 林福裕" data-tag="民間詼諧・甘霖將至">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="天黑黑(台灣童謠)" data-artist="台語囝仔歌 / 林福裕" data-tag="民間詼諧・甘霖將至">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
                 <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第四曲</span>
-                <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/60">民間詼諧・甘霖將至</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">民間詼諧・甘霖將至</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">天黑黑 (台灣童謠)</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：台語囝仔歌 ｜ 林福裕整理編曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">天黑黑(台灣童謠)</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：台語囝仔歌 / 林福裕 ｜ 林福裕 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                開篇「天黑黑，要落雨」描摹大雨將至前烏雲密布的天色，隨後以詼諧民間筆法寫阿公阿嬤煮旋鰡鼓，展現暴風雨前夕濃厚的鄉土人情與生活智慧。
+                台灣民間流傳最廣的鄉土童謠之一，由林福裕先生依據傳統唸謠整理譜寫成曲。全曲以「天黑黑要落雨」為起興，描述老阿公在暴雨將至前荷鋤掘芋，意外挖到泥鰍，回家後卻與阿嬤為了泥鰍究竟要「煮鹽（煮鹹）」還是「煮淡」爭論不休、大打出手弄破鍋鼎的日常趣事，充滿詼諧幽默的鄉土人情味。深刻呼應《田園之秋選》中「烏雲蔽日、天地為之變色」的大自然驟變，以及台灣農民面對風雨生活時的豁達、勤勞與樂觀。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l01-autumn/dark-sky.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-emerald-800 border border-emerald-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l01-autumn/dark-sky.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l01-autumn/worksheet-dark-sky.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l01-autumn/worksheet-dark-sky.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- ==================== LESSON 02 ==================== -->
-      <section id="lesson-L02" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="L02" data-lesson-name="古詩選" data-author="漢代古詩">
-        <!-- Section Header -->
+      <!-- Lesson Section: B3L02 古詩選 -->
+      <section id="lesson-B3L02" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="B3L02" data-lesson-name="古詩選" data-author="古詩十九首等">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
               02
             </div>
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">
-                  八上第 02 課・古典詩歌
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  八上國文・古體詩・深情思念
                 </span>
-                <span class="text-xs font-semibold text-slate-500">作者：漢代古詩（迢迢牽牛星、飲馬長城窟行）</span>
+                <span class="text-xs font-semibold text-slate-500">作者：古詩十九首等</span>
               </div>
               <h2 class="text-lg sm:text-xl font-serif font-bold text-slate-900 mt-1">
                 《古詩選》穿越千年的浪漫凝望・古典情韻與當代音韻的動人交會
               </h2>
-              <p class="text-xs text-slate-600 mt-0.5">
-                結合《迢迢牽牛星》與《飲馬長城窟行》古詩賞析，聆聽星晴、克卜勒、突然好想你與我最親愛的，感受古今相思與深情的共振。
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                結合《迢迢牽牛星》與《飲馬長城窟行》古詩賞析，聆聽星晴、克卜勒、突然好想你與我最親愛的，感受古今相思與深情的共振，邊聽音樂邊完成歌詞填空與深度鑑賞
               </p>
             </div>
           </div>
-          <!-- Lesson Hub Button -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="../b3l02-poetry/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm flex items-center gap-2 group">
+          <div class="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <a href="../b3l02-poetry/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group active:scale-95">
               <span>進入課次首頁</span>
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
           </div>
         </div>
 
-        <!-- Songs Grid for L02 -->
+        <!-- Songs Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          
-          <!-- Song 1 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-indigo-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="星晴" data-artist="周杰倫" data-tag="青春浪漫・仰望星空">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="星晴" data-artist="周杰倫" data-tag="青春浪漫・仰望星空">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-indigo-100 text-indigo-800 text-[10px]">第一曲</span>
-                <span class="text-[11px] font-medium text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200/60">青春浪漫・仰望星空</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第一曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">青春浪漫・仰望星空</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">星晴</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：周杰倫 ｜ 周杰倫詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">星晴</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：周杰倫 ｜ 周杰倫 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以輕快悠揚的和聲描摹戀人牽手仰望星空的純真，「乘著風，遊蕩在藍天邊」，巧妙呼應《迢迢牽牛星》中對遙遠星河與真摯情感的凝望。
+                周杰倫首張專輯的經典抒情代表作。以輕快溫柔的R&B吉他旋律，描繪徜徉藍天、手牽手漫步看星星的純真情思。「看星星 一顆兩顆三顆四顆 連成線」，純真地將遙遠浩瀚的星空串聯成愛的守護，深刻呼應古詩《迢迢牽牛星》中「迢迢牽牛星，皎皎河漢女」對星空的深情凝望與浪漫寄託。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l02-poetry/starry-mood.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-indigo-600 hover:text-white text-indigo-800 border border-indigo-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l02-poetry/starry-mood.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l02-poetry/worksheet-starry-mood.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-indigo-700 hover:bg-indigo-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l02-poetry/worksheet-starry-mood.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 2 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-indigo-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="克卜勒" data-artist="孫燕姿" data-tag="璀璨孤星・守護相伴">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="克卜勒" data-artist="孫燕姿" data-tag="璀璨孤星・守護相伴">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-indigo-100 text-indigo-800 text-[10px]">第二曲</span>
-                <span class="text-[11px] font-medium text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200/60">璀璨孤星・守護相伴</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第二曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">璀璨孤星・守護相伴</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">克卜勒</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：孫燕姿 ｜ Hush詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">克卜勒</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：孫燕姿 ｜ Hush 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                將宇宙中每顆寂寞發光的星辰比擬為渴望被理解的心靈，「等不到你，成為我最閃星空的信號」，呼應《迢迢牽牛星》中「盈盈一水間，脈脈不得語」的千古相思。
+                取材自16世紀德國天文學家克卜勒發現行星運動定律的科學意象。詞曲作者Hush巧妙將宇宙中孤獨運行的星體，比擬為浩瀚人海中尋求連結的靈魂。即使相隔千萬光年、沉浸於冰冷銀河，「我依然願意借給你我的光」。這份溫柔而堅定的守候，恰如古詩中牽牛與織女隔銀河遙相輝映、永不熄滅的深情守候。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l02-poetry/kepler.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-indigo-600 hover:text-white text-indigo-800 border border-indigo-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l02-poetry/kepler.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l02-poetry/worksheet-kepler.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-indigo-700 hover:bg-indigo-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l02-poetry/worksheet-kepler.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 3 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-indigo-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="突然好想你" data-artist="五月天" data-tag="深情思念・回憶翻湧">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="突然好想你" data-artist="五月天" data-tag="深情思念・回憶翻湧">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-indigo-100 text-indigo-800 text-[10px]">第三曲</span>
-                <span class="text-[11px] font-medium text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200/60">深情思念・回憶翻湧</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第三曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">深情思念・回憶翻湧</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">突然好想你</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：五月天 ｜ 阿信詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">突然好想你</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：五月天 ｜ 阿信 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以「突然好想你，你會在哪裡」唱出平凡日常中無預警湧上的思念，深刻契合《飲馬長城窟行》中「遠道不可思，夙昔夢見之」那份刻骨銘心的牽掛。
+                華語流行樂壇最具感染力的思念神曲。阿信以細膩動人的文字，捕捉日常生活片刻突如其來的思念浪潮。最怕空氣突然安靜、最怕朋友突然的關心，回憶便如洶湧波濤絞痛心扉。這份跨越時空、壓抑卻無處不在的刻骨相思，與《迢迢牽牛星》「盈盈一水間，脈脈不得語」中終日垂淚的深沉悲戚遙相呼應。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l02-poetry/suddenly-miss-you.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-indigo-600 hover:text-white text-indigo-800 border border-indigo-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l02-poetry/suddenly-miss-you.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l02-poetry/worksheet-suddenly-miss-you.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-indigo-700 hover:bg-indigo-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l02-poetry/worksheet-suddenly-miss-you.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 4 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-indigo-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我最親愛的" data-artist="張惠妹" data-tag="釋懷祝福・溫柔致候">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我最親愛的" data-artist="張惠妹" data-tag="釋懷祝福・溫柔致候">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-indigo-100 text-indigo-800 text-[10px]">第四曲</span>
-                <span class="text-[11px] font-medium text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200/60">釋懷祝福・溫柔致候</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第四曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">釋懷祝福・溫柔致候</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-indigo-700 transition-colors">我最親愛的</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：張惠妹 ｜ 林夕詞・Rusell Harris曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">我最親愛的</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：張惠妹 ｜ 林夕 詞 ｜ Russell Harris 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以溫柔成熟的口吻向遠方的故人道出深情問候，「我最親愛的，你過得怎麼樣？」呼應《飲馬長城窟行》書信叮嚀「上言加餐飯，下言長相憶」，展現深情祝願。
+                詞神林夕與天后張惠妹攜手打造的抒情極致經典。歌曲跳脫了年少時執念與哀怨，以歲月沉澱後的淡然從容，向曾經刻骨銘心的舊人輕道一聲「別來無恙」。這種由愛情昇華為如親人般的溫柔祝福與包容，正如同古典詩歌中歷經時間淬鍊後所展現的豁達境界與恆久深情。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l02-poetry/my-dearest.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-indigo-600 hover:text-white text-indigo-800 border border-indigo-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l02-poetry/my-dearest.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l02-poetry/worksheet-my-dearest.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-indigo-700 hover:bg-indigo-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l02-poetry/worksheet-my-dearest.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- ==================== LESSON 03 ==================== -->
-      <section id="lesson-L03" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="L03" data-lesson-name="下雨天真好" data-author="琦君">
-        <!-- Section Header -->
+      <!-- Lesson Section: B3L03 下雨天真好 -->
+      <section id="lesson-B3L03" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="B3L03" data-lesson-name="下雨天真好" data-author="琦君">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-12 h-12 rounded-2xl bg-sky-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
               03
             </div>
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-sky-100 text-sky-800 border border-sky-200">
-                  八上第 03 課・懷舊抒情散文
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  八上國文・回憶散文・綿綿雨景
                 </span>
                 <span class="text-xs font-semibold text-slate-500">作者：琦君</span>
               </div>
               <h2 class="text-lg sm:text-xl font-serif font-bold text-slate-900 mt-1">
-                《下雨天，真好》雨絲綿綿與溫潤心靈的文學共鳴
+                《下雨天真好》雨絲綿綿與溫潤心靈的文學共鳴
               </h2>
-              <p class="text-xs text-slate-600 mt-0.5">
-                結合琦君《下雨天，真好》課文賞析，聆聽下雨的夜晚、那天下雨了與雨天的深情旋律，在淅瀝雨聲中找回純真童年與心靈溫暖。
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                結合琦君《下雨天，真好》課文賞析，聆聽下雨的夜晚、那天下雨了與雨天的深情旋律，邊聽音樂邊完成歌詞填空與深度鑑賞
               </p>
             </div>
           </div>
-          <!-- Lesson Hub Button -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="../b3l03-rainy-day/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-600 hover:bg-sky-700 text-white transition-all shadow-sm flex items-center gap-2 group">
+          <div class="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <a href="../b3l03-rainy-day/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group active:scale-95">
               <span>進入課次首頁</span>
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
           </div>
         </div>
 
-        <!-- Songs Grid for L03 -->
+        <!-- Songs Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
-          <!-- Song 1 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-sky-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="下雨的夜晚" data-artist="蘇打綠" data-tag="療癒抒情・風雨同行">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="下雨的夜晚" data-artist="蘇打綠" data-tag="療癒抒情・風雨同行">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-sky-100 text-sky-800 text-[10px]">第一曲</span>
-                <span class="text-[11px] font-medium text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md border border-sky-200/60">療癒抒情・風雨同行</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第一曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">療癒抒情・風雨同行</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-sky-700 transition-colors">下雨的夜晚</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：蘇打綠 ｜ 吳青峰詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">下雨的夜晚</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：蘇打綠 ｜ 吳青峰 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                吳青峰溫柔撫慰受傷的心靈，「下雨的夜晚，你的心整個都摔碎了」，正如琦君在雨天感受到母親與長輩的慈愛溫暖，雨夜亦能孕育出最溫柔的陪伴。
+                吳青峰創作的治癒系抒情經典。在陰鬱下雨的夜晚，每個人都有受傷、脆弱與悲傷的時刻，但正是在這樣的雨夜，雨水掩護著眼淚，伴隨著溫柔的陪伴與支持。呼應琦君《下雨天，真好》中雨天給予心靈的溫暖撫慰，傳達出「受傷了誰都會哭泣，哭完了別否定過去」的深刻溫柔。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l03-rainy-day/rainy-night.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-sky-600 hover:text-white text-sky-800 border border-sky-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l03-rainy-day/rainy-night.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l03-rainy-day/worksheet-rainy-night.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-sky-700 hover:bg-sky-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l03-rainy-day/worksheet-rainy-night.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 2 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-sky-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="那天下雨了" data-artist="周杰倫" data-tag="校園懷舊・青澀回憶">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="那天下雨了" data-artist="周杰倫" data-tag="校園懷舊・青澀回憶">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-sky-100 text-sky-800 text-[10px]">第二曲</span>
-                <span class="text-[11px] font-medium text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md border border-sky-200/60">校園懷舊・青澀回憶</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第二曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">校園懷舊・青澀回憶</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-sky-700 transition-colors">那天下雨了</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：周杰倫 ｜ 琴聲與校園記憶</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">那天下雨了</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：周杰倫 ｜ 周杰倫 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以青春校園與雨天場景為背景，琴聲緩緩淌流出青澀往事，呼應琦君筆下躲在屋簷下、聽著雨聲聽著故事的純真童年，重溫那份溫潤歲月。
+                周杰倫融合校園回憶與雨中情懷的經典曲風，描繪多年後與隔壁班女孩偶遇，勾起那些在校園雨天撐傘、借課本的純真暗戀。雨絲如同記憶的時光機，深刻契合琦君回憶童年雨天的純真情懷與韶華追憶，讓人不禁想問：「如果回到過去那一個下雨天，你是否會把傘撐開？」
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l03-rainy-day/that-rainy-day.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-sky-600 hover:text-white text-sky-800 border border-sky-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l03-rainy-day/that-rainy-day.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l03-rainy-day/worksheet-that-rainy-day.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-sky-700 hover:bg-sky-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l03-rainy-day/worksheet-that-rainy-day.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 3 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-sky-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="雨天" data-artist="孫燕姿" data-tag="都市深情・雨中釋懷">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="雨天" data-artist="孫燕姿" data-tag="都市深情・雨中釋懷">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-sky-100 text-sky-800 text-[10px]">第三曲</span>
-                <span class="text-[11px] font-medium text-sky-700 bg-sky-50 px-2 py-0.5 rounded-md border border-sky-200/60">都市深情・雨中釋懷</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第三曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">都市深情・雨中釋懷</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-sky-700 transition-colors">雨天</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：孫燕姿 ｜ 小寒詞・李偉菘曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">雨天</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：孫燕姿 ｜ 小寒 詞 ｜ 李偉菘 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                「誰能體諒我的雨天」，與琦君筆下「雨天是屬於回憶與沉澱的」形成情感共鳴，展現風雨過後心靈的清澈與安寧。
+                孫燕姿以內斂而富感染力的嗓音，唱出在雨天十字路口徘徊的迷惘與挽留不及的遺憾。「雨天」既是天候，更是心境上的脆弱與陰霾。與琦君筆下在雨天裡尋求心靈安頓形成豐富的生命對照，讓學生體會雨中既有浪漫懷想，亦有成長必須面對的放手與體諒。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l03-rainy-day/rainy-day.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-sky-600 hover:text-white text-sky-800 border border-sky-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l03-rainy-day/rainy-day.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l03-rainy-day/worksheet-rainy-day.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-sky-700 hover:bg-sky-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l03-rainy-day/worksheet-rainy-day.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- ==================== LESSON 04 ==================== -->
-      <section id="lesson-L04" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="L04" data-lesson-name="愛蓮說" data-author="周敦頤">
-        <!-- Section Header -->
+      <!-- Lesson Section: B3L04 愛蓮說 -->
+      <section id="lesson-B3L04" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="B3L04" data-lesson-name="愛蓮說" data-author="周敦頤">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-12 h-12 rounded-2xl bg-amber-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
               04
             </div>
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
-                  八上第 04 課・古文名篇說理散文
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  八上國文・哲理散文・君子品格
                 </span>
                 <span class="text-xs font-semibold text-slate-500">作者：周敦頤</span>
               </div>
               <h2 class="text-lg sm:text-xl font-serif font-bold text-slate-900 mt-1">
                 《愛蓮說》蓮華清韻與生命的文學共鳴
               </h2>
-              <p class="text-xs text-slate-600 mt-0.5">
-                結合周敦頤《愛蓮說》課文賞析，聆聽張藝興《愛蓮說》、周杰倫《菊花台》與GAI周延《蓮花》的君子心聲，感悟出淤泥而不染的高尚風骨。
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                結合周敦頤《愛蓮說》課文賞析，聆聽張藝興《愛蓮說》、周杰倫《菊花台》與GAI周延《蓮花》的君子心聲，邊聽音樂邊完成歌詞填空與深度鑑賞
               </p>
             </div>
           </div>
-          <!-- Lesson Hub Button -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="../b3l04-lotus/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-600 hover:bg-amber-700 text-white transition-all shadow-sm flex items-center gap-2 group">
+          <div class="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <a href="../b3l04-lotus/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group active:scale-95">
               <span>進入課次首頁</span>
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
           </div>
         </div>
 
-        <!-- Songs Grid for L04 -->
+        <!-- Songs Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
-          <!-- Song 1 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-amber-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="愛蓮說" data-artist="張藝興" data-tag="國風潮流・君子清白">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="愛蓮說" data-artist="張藝興" data-tag="國風潮流・君子清白">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800 text-[10px]">第一曲</span>
-                <span class="text-[11px] font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/60">國風潮流・君子清白</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第一曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">國風潮流・君子清白</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-amber-700 transition-colors">愛蓮說</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：張藝興 ｜ 周敦頤、張藝興詞・張藝興曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">愛蓮說</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：張藝興 ｜ 周敦頤、張藝興 詞 ｜ 張藝興 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                將千年古文融入現代國風節奏，「看盡了萬花我只愛一朵蓮」、「污泥滿身不染半分花照開」，唱出在浮躁世俗中不隨波逐流、堅守清白的君子志節。
+                張藝興結合宋代周敦頤經典名篇《愛蓮說》，將千年文言古文、琵琶古箏等國樂元素與現代節奏完美熔鑄。歌詞中「看盡了萬花我只愛一朵蓮」、「污泥滿身不染半分花照開」，不僅傳承了周敦頤「出淤泥而不染，濯清漣而不妖」之君子風骨，更以當代音樂語言唱出在繁華浮躁的世俗洪流中，不隨波逐流、堅守清白與初心的傲然志節。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l04-lotus/ailian-shuo.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-amber-600 hover:text-white text-amber-800 border border-amber-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l04-lotus/ailian-shuo.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l04-lotus/worksheet-ailian-shuo.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l04-lotus/worksheet-ailian-shuo.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 2 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-amber-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="菊花台" data-artist="周杰倫" data-tag="中國風經典・隱士與秋思">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="菊花台" data-artist="周杰倫" data-tag="中國風經典・隱士與秋思">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800 text-[10px]">第二曲</span>
-                <span class="text-[11px] font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/60">中國風經典・隱士與秋思</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第二曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">中國風經典・隱士與秋思</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-amber-700 transition-colors">菊花台</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：周杰倫 ｜ 方文山詞・周杰倫曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">菊花台</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：周杰倫 ｜ 方文山 詞 ｜ 周杰倫 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以菊花象徵堅貞與孤絕，呼應《愛蓮說》中「晉陶淵明獨愛菊」之隱逸象徵。古箏與大提琴悲愴交織，展現「花落人斷腸」時內心的孤高與深情。
+                周杰倫與方文山聯手打造的中國風巔峰之作，電影《滿城盡帶黃金甲》片尾曲。歌詞以菊花象徵堅貞、淒美與孤絕，巧妙呼應《愛蓮說》中「晉陶淵明獨愛菊」之隱逸象徵。典雅深沉的古典詩詞修辭，融入古箏與大提琴交織的悲愴旋律，既訴說命運的飄零無奈，亦展現「花落人斷腸」時內心的孤高與深情。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l04-lotus/juhua-tai.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-amber-600 hover:text-white text-amber-800 border border-amber-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l04-lotus/juhua-tai.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l04-lotus/worksheet-juhua-tai.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l04-lotus/worksheet-juhua-tai.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 3 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-amber-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="蓮花" data-artist="GAI周延" data-tag="新華流說唱・逆境生花">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="蓮花" data-artist="GAI周延" data-tag="新華流說唱・逆境生花">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-amber-100 text-amber-800 text-[10px]">第三曲</span>
-                <span class="text-[11px] font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/60">新華流說唱・逆境生花</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第三曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">新華流說唱・逆境生花</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-amber-700 transition-colors">蓮花</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：GAI周延 ｜ GAI周延詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">蓮花</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：GAI周延 ｜ GAI周延 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以「長滿倒刺的蓮花」為意象，將「出淤泥而不染」昇華為在困境泥沼中頑強破土、傲然挺立的生命韌性，唱出不願向命運低頭的堅毅精神。
+                GAI周延創作演唱的新華流國風說唱作品。全曲以「長滿倒刺的蓮花」為核心意象，顛覆傳統蓮花柔美文弱的形象，將「出淤泥而不染」昇華為在困境泥沼中頑強破土、歷經萬般磨難依然傲立的生命韌性。鏗鏘有力的詞句與激昂的旋律，唱出不願向命運屈服、在風雨中掙脫枷鎖的堅毅靈魂。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l04-lotus/lian-hua.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-amber-600 hover:text-white text-amber-800 border border-amber-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l04-lotus/lian-hua.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l04-lotus/worksheet-lian-hua.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-amber-700 hover:bg-amber-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l04-lotus/worksheet-lian-hua.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- ==================== LESSON 05 ==================== -->
-      <section id="lesson-L05" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="L05" data-lesson-name="生命中的碎珠" data-author="陳幸蕙">
-        <!-- Section Header -->
+      <!-- Lesson Section: B3L05 生命中的碎珠 -->
+      <section id="lesson-B3L05" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="B3L05" data-lesson-name="生命中的碎珠" data-author="董橋">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-12 h-12 rounded-2xl bg-rose-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
               05
             </div>
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800 border border-rose-200">
-                  八上第 05 課・哲理感悟散文
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  八上國文・隨筆散文・珍惜時光
                 </span>
-                <span class="text-xs font-semibold text-slate-500">作者：陳幸蕙</span>
+                <span class="text-xs font-semibold text-slate-500">作者：董橋</span>
               </div>
               <h2 class="text-lg sm:text-xl font-serif font-bold text-slate-900 mt-1">
                 《生命中的碎珠》拾綴韶光碎珠與生命的哲理共鳴
               </h2>
-              <p class="text-xs text-slate-600 mt-0.5">
-                結合陳幸蕙《生命中的碎珠》課文賞析，聆聽五月天經典哲思歌曲，在旋律中學會善用零碎時間、把握當下不留遺憾。
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                結合陳幸蕙《生命中的碎珠》課文賞析，聆聽五月天經典哲思歌曲，在旋律中學會善用零碎時間、把握當下不留遺憾
               </p>
             </div>
           </div>
-          <!-- Lesson Hub Button -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="../b3l05-pearls/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white transition-all shadow-sm flex items-center gap-2 group">
+          <div class="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <a href="../b3l05-pearls/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group active:scale-95">
               <span>進入課次首頁</span>
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
           </div>
         </div>
 
-        <!-- Songs Grid for L05 -->
+        <!-- Songs Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-          <!-- Song 1 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-rose-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="如煙" data-artist="五月天" data-tag="哲理省思・歲月無聲">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="如煙" data-artist="五月天" data-tag="哲理省思・歲月無聲">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-800 text-[10px]">第一曲</span>
-                <span class="text-[11px] font-medium text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200/60">哲理省思・歲月無聲</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第一曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">哲理省思・歲月無聲</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-rose-700 transition-colors">如煙</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：五月天 ｜ 阿信詞・石頭曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">如煙</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：五月天 ｜ 阿信 詞 ｜ 石頭 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以倒敘筆法回望一生光陰如煙消逝，「有沒有那麼一個明天，重頭活一遍」，強烈呼應陳幸蕙在《生命中的碎珠》中提醒大家韶光易逝、切莫虛擲光陰的深切警醒。
+                由阿信作詞、石頭作曲，收錄於五月天《後青春期的詩》專輯。全曲宛如一位走到生命盡頭的老人坐在床前，回顧自己一生如煙火般絢麗卻轉瞬即逝的歲月。歌詞層層叩問「有沒有那麼一種永遠」、「有沒有那麼一滴眼淚」、「有沒有那麼一個明天」，深切探討時光的無情、青春的流逝與生命的缺憾。深刻呼應陳幸蕙《生命中的碎珠》中「善用零碎時間」、「珍惜韶光」、「生命不可揮霍」之哲理，提醒我們在如煙歲月裡珍惜當下，不讓故事徒留遺憾與後悔。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l05-pearls/ruyan.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-rose-600 hover:text-white text-rose-800 border border-rose-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l05-pearls/ruyan.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l05-pearls/worksheet-ruyan.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-rose-700 hover:bg-rose-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l05-pearls/worksheet-ruyan.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 2 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-rose-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="有些事現在不做一輩子都不會做了" data-artist="五月天" data-tag="熱血勵志・把握當下">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="有些事現在不做一輩子都不會做了" data-artist="五月天" data-tag="熱血勵志・把握當下">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-rose-100 text-rose-800 text-[10px]">第二曲</span>
-                <span class="text-[11px] font-medium text-rose-700 bg-rose-50 px-2 py-0.5 rounded-md border border-rose-200/60">熱血勵志・把握當下</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第二曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">熱血勵志・把握當下</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-rose-700 transition-colors">有些事現在不做一輩子都不會做了</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：五月天 ｜ 阿信詞・怪獸曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">有些事現在不做一輩子都不會做了</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：五月天 ｜ 阿信 詞 ｜ 怪獸 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                熱血激昂的旋律唱出把握當下的行動力。「每個渺小的理由，都困住自由」，呼應陳幸蕙文章宗旨：莫輕忽零碎光陰，想做的事立即開始，才能串起充實璀璨的人生。
+                由阿信作詞、怪獸作曲，收錄於五月天《第二人生》專輯。歌曲以激昂明快的節奏與深刻熱血的歌詞，直擊每個人心中的猶豫與藉口。「年輪裡面有鐘，皺紋裡面有鐘，就算暫停全世界的鐘，也停不了一秒鐘」，生動刻畫時間不舍晝夜的流逝。阿信大聲質問「有些事情還不做，你的理由會是什麼？」，強烈呼應陳幸蕙在《生命中的碎珠》所引述富蘭克林的警言：「你熱愛生命嗎？那麼別浪費時間，因為時間是組成生命的材料。」喚醒聽者掙脫懦弱與藉口，立即付諸行動，活出屬於自己的雋永篇章。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l05-pearls/now-or-never.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-rose-600 hover:text-white text-rose-800 border border-rose-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l05-pearls/now-or-never.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l05-pearls/worksheet-now-or-never.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-rose-700 hover:bg-rose-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l05-pearls/worksheet-now-or-never.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
         </div>
       </section>
 
-      <!-- ==================== LESSON 06 ==================== -->
-      <section id="lesson-L06" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="L06" data-lesson-name="鳥" data-author="梁實秋">
-        <!-- Section Header -->
+      <!-- Lesson Section: B3L06 鳥 -->
+      <section id="lesson-B3L06" class="lesson-section bg-white rounded-3xl p-5 sm:p-7 shadow-sm border border-slate-200 space-y-6" data-lesson-id="B3L06" data-lesson-name="鳥" data-author="梁實秋">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
           <div class="flex items-start sm:items-center gap-3.5">
-            <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-serif font-black text-xl shadow-md shrink-0">
               06
             </div>
             <div>
               <div class="flex flex-wrap items-center gap-2">
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 text-teal-800 border border-teal-200">
-                  八上第 06 課・雅舍小品散文
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  八上國文・觀察散文・愛護生靈
                 </span>
                 <span class="text-xs font-semibold text-slate-500">作者：梁實秋</span>
               </div>
               <h2 class="text-lg sm:text-xl font-serif font-bold text-slate-900 mt-1">
                 《鳥》飛羽天籟與生命的文學共鳴
               </h2>
-              <p class="text-xs text-slate-600 mt-0.5">
-                結合梁實秋《鳥》課文賞析，聆聽畫眉鳥、小小鳥與蜂鳥的羽翼心聲，反思自由與拘囚，體悟小人物奮鬥與生命勇氣。
+              <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                結合梁實秋《鳥》課文賞析，聆聽畫眉鳥、小小鳥與蜂鳥的羽翼心聲，邊聽音樂邊完成歌詞填空與深度鑑賞
               </p>
             </div>
           </div>
-          <!-- Lesson Hub Button -->
-          <div class="flex items-center gap-2 shrink-0">
-            <a href="../b3l06-birds/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-teal-600 hover:bg-teal-700 text-white transition-all shadow-sm flex items-center gap-2 group">
+          <div class="flex items-center gap-2 shrink-0 self-end md:self-center">
+            <a href="../b3l06-birds/index.html" class="px-4 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-sm flex items-center gap-2 group active:scale-95">
               <span>進入課次首頁</span>
               <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
             </a>
           </div>
         </div>
 
-        <!-- Songs Grid for L06 -->
+        <!-- Songs Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
-          <!-- Song 1 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-teal-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我是一隻畫眉鳥" data-artist="鳳飛飛" data-tag="經典金曲・籠鳥心聲">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我是一隻畫眉鳥" data-artist="鳳飛飛" data-tag="經典金曲・籠鳥心聲">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-teal-100 text-teal-800 text-[10px]">第一曲</span>
-                <span class="text-[11px] font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200/60">經典金曲・籠鳥心聲</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第一曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">經典金曲・籠鳥心聲</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-teal-700 transition-colors">我是一隻畫眉鳥</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：鳳飛飛 ｜ 狄梵詞・姚敏曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">我是一隻畫眉鳥</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：鳳飛飛 ｜ 狄薏(陳蝶衣) 詞 ｜ 姚敏 曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以第一人稱自白控訴關在鳥籠裡的悲哀無奈，渴望展翅雲霄，深刻呼應梁實秋《鳥》中對於籠中鳥「肚皮慢慢挺起、羽毛漸漸退色」的悲憫與批判。
+                改編自傳統詩意的經典名曲。以第一人稱擬人化筆法，唱出籠中畫眉鳥渴望展翅高飛的心聲。歌詞表面寫鳥兒沒有羽毛、缺少雙腳，實則控訴「關在鳥籠裡」失去自由的無奈與哀怨，深刻呼應梁實秋《鳥》中對於籠中囚鳥「羽毛漸漸退色，肚子慢慢鼓起」之悲憫與反思。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l06-birds/huamei-bird.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-teal-600 hover:text-white text-teal-800 border border-teal-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l06-birds/huamei-bird.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l06-birds/worksheet-huamei-bird.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-teal-700 hover:bg-teal-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l06-birds/worksheet-huamei-bird.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 2 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-teal-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我是一隻小小鳥" data-artist="趙傳" data-tag="傳奇搖滾・小人物心聲">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="我是一隻小小鳥" data-artist="趙傳" data-tag="傳奇搖滾・小人物心聲">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-teal-100 text-teal-800 text-[10px]">第二曲</span>
-                <span class="text-[11px] font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200/60">傳奇搖滾・小人物心聲</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第二曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">傳奇搖滾・小人物心聲</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-teal-700 transition-colors">我是一隻小小鳥</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：趙傳 ｜ 李宗盛詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">我是一隻小小鳥</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：趙傳 ｜ 李宗盛 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                華語樂壇最具穿透力的小人物自白神曲。唱出在現實泥淖中「想要飛卻飛不高」的掙扎與徬徨，與課文《鳥》中自由遨遊天際的飛鳥形成強烈的生命對話。
+                華語流行樂壇最具穿透力的小人物自白神曲。李宗盛寫出都市人在生活現實與崇高理想間的掙扎，趙傳以高亢滄桑的嗓音，唱出無數平凡人「想要飛卻飛不高」的徬徨心聲，與課文《鳥》中翱翔天際的自由飛鳥形成強烈的生命對話。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l06-birds/little-bird.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-teal-600 hover:text-white text-teal-800 border border-teal-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l06-birds/little-bird.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l06-birds/worksheet-little-bird.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-teal-700 hover:bg-teal-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l06-birds/worksheet-little-bird.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
-          <!-- Song 3 -->
-          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-teal-300 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="蜂鳥" data-artist="吳青峰" data-tag="追光神話・勇敢振翅">
+          <div class="song-card bg-slate-50 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-emerald-200 hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between" data-title="蜂鳥" data-artist="吳青峰" data-tag="追光神話・勇敢振翅">
             <div>
               <div class="flex items-center justify-between text-xs mb-2">
-                <span class="px-2 py-0.5 rounded-full font-bold bg-teal-100 text-teal-800 text-[10px]">第三曲</span>
-                <span class="text-[11px] font-medium text-teal-700 bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200/60">追光神話・勇敢振翅</span>
+                <span class="px-2 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800 text-[10px]">第三曲</span>
+                <span class="text-[11px] font-medium bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-md border border-emerald-200/60 truncate max-w-[150px]">追光神話・勇敢振翅</span>
               </div>
-              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-teal-700 transition-colors">蜂鳥</h3>
-              <p class="text-xs text-slate-500 mt-0.5">演唱：吳青峰 ｜ 吳青峰詞曲</p>
+              <h3 class="text-base font-serif font-bold text-slate-900 group-hover:text-orange-700 transition-colors">蜂鳥</h3>
+              <p class="text-xs text-slate-500 mt-0.5 truncate">演唱：吳青峰 ｜ 吳青峰 詞曲</p>
               <p class="text-xs text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                以神話中帶來光明的蜂鳥為靈感，即使身軀微小、力量單薄，只要堅持振翅就能衝破黑暗，呼應梁實秋對鳥類矯健輕捷的天性與生命韌性的由衷讚嘆。
+                吳青峰以神話中帶來火種與光明的蜂鳥為靈感，寫給在都市與生命迷宮中奮鬥的每一個渺小靈魂。蜂鳥雖小，卻能抵抗狂風、倒退飛行；即使力量微弱，只要勇敢振翅，也能匯聚成照亮彼此的溫暖光芒。呼應《鳥》中對飛鳥生命韌性與天性自由的禮讚。
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-200/70 flex items-center gap-2">
-              <a href="../b3l06-birds/hummingbird.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-teal-600 hover:text-white text-teal-800 border border-teal-300 text-center transition-all shadow-xs flex items-center justify-center gap-1.5">
+              <a href="../b3l06-birds/hummingbird.html" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-white hover:bg-emerald-600 hover:text-white text-slate-800 border border-emerald-200 text-center transition-all shadow-xs flex items-center justify-center gap-1.5 active:scale-95">
                 <i class="fa-solid fa-play text-[10px]"></i>
-                <span>互動學習頁</span>
+                <span>進入好歌學習</span>
               </a>
-              <a href="../b3l06-birds/worksheet-hummingbird.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-slate-500 hover:text-teal-700 hover:bg-teal-50 border border-slate-200 text-xs">
-                <i class="fa-solid fa-file-pdf"></i>
+              <a href="../b3l06-birds/worksheet-hummingbird.pdf" download title="下載學習單 PDF" class="p-1.5 rounded-lg text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors flex items-center justify-center active:scale-95">
+                <i class="fa-solid fa-file-pdf text-rose-500"></i>
               </a>
             </div>
           </div>
-
         </div>
       </section>
 
-    </div>
-
-    <!-- No Results Box -->
-    <div id="noResults" class="hidden bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm">
-      <div class="w-16 h-16 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-2xl mx-auto mb-3">
-        <i class="fa-solid fa-compact-disc"></i>
-      </div>
-      <h3 class="text-base font-serif font-bold text-slate-800">查無符合條件的好歌或課次</h3>
-      <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">請嘗試更換關鍵字（如：歌手名稱、周杰倫、五月天、孫燕姿、雨天等），或點選上方「全部課次」標籤重設篩選。</p>
-      <button onclick="clearSearch()" class="mt-4 px-4 py-2 rounded-xl text-xs font-bold bg-orange-600 text-white hover:bg-orange-700 shadow-sm">
-        清除搜尋條件
-      </button>
-    </div>
-
-    <!-- ==================== TEACHING HIGHLIGHTS FEATURE CARDS ==================== -->
-    <div class="bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-      <div class="max-w-3xl">
-        <div class="flex items-center gap-2 mb-2">
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-orange-500/20 text-orange-300 border border-orange-400/30">
-            教學設計亮點
-          </span>
-          <span class="text-xs text-stone-400 font-mono">INNOVATIVE PEDAGOGY</span>
+      <!-- No Results Box -->
+      <div id="noResults" class="hidden bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm space-y-4">
+        <div class="w-16 h-16 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-2xl mx-auto shadow-xs">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <h3 class="text-lg sm:text-2xl font-serif font-bold text-white tracking-wide">
-          為什麼將流行歌曲與經典國文課文深度熔鑄？
-        </h3>
-        <p class="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-          音樂是情感最直接的載體，文學是思想最深刻的沉澱。「歌SONG國文」平台打破傳統字詞背誦的枯燥藩籬，藉由歌詞精準挖洞激發專注聽音辨義，透過黑膠動態操作建立沉浸意境，再以教用螢光筆引導學生提煉核心主旨，打造全方位跨界的情感共鳴與語文素養。
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-stone-700/60">
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
-            <i class="fa-solid fa-bullseye"></i>
-          </div>
-          <div>
-            <h4 class="text-xs font-bold text-white">向量精準挖洞</h4>
-            <p class="text-[11px] text-stone-400 mt-0.5">100% 依原紙本學習單位置向量挖洞，未挖洞處原汁原味，不擅自增刪。</p>
-          </div>
+        <div class="space-y-1">
+          <h3 class="text-base font-bold text-slate-800 font-serif">查無相符的文學好歌</h3>
+          <p class="text-xs text-slate-500">請嘗試更換搜尋關鍵字或點擊上方課次按鈕重設篩選</p>
         </div>
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
-            <i class="fa-solid fa-highlighter"></i>
-          </div>
-          <div>
-            <h4 class="text-xs font-bold text-white">教用螢光筆關鍵句</h4>
-            <p class="text-[11px] text-stone-400 mt-0.5">自動提取教用版最後一頁螢光筆高亮重點，一鍵展開核心意境解答。</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
-            <i class="fa-solid fa-sliders"></i>
-          </div>
-          <div>
-            <h4 class="text-xs font-bold text-white">極簡免作答框</h4>
-            <p class="text-[11px] text-stone-400 mt-0.5">捨棄多餘輸入框與生硬田字格，直覺翻牌揭曉紅字手寫楷體答案。</p>
-          </div>
-        </div>
+        <button onclick="clearSearch(); filterLessons('all')" class="px-4 py-2 rounded-xl text-xs font-bold bg-orange-600 text-white hover:bg-orange-700 transition-all shadow-xs cursor-pointer">
+          重設課次篩選
+        </button>
       </div>
     </div>
+        <!-- ==================== INNOVATIVE PEDAGOGY HIGHLIGHTS (教學設計亮點) ==================== -->
+    <div class="bg-gradient-to-r from-orange-600 via-amber-600 to-stone-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+      <!-- Background Decorative Lights -->
+      <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute right-1/3 -top-10 w-56 h-56 bg-amber-300/20 rounded-full blur-2xl pointer-events-none"></div>
 
+      <div class="relative z-10 space-y-5">
+        <div>
+          <div class="flex items-center gap-2.5 mb-2.5">
+            <span class="px-3 py-0.5 rounded-full text-xs font-bold bg-white/20 text-amber-200 border border-white/20 backdrop-blur-xs">
+              教學設計亮點
+            </span>
+            <span class="text-xs font-mono tracking-wider text-orange-200/90 uppercase font-semibold">
+              INNOVATIVE PEDAGOGY
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-2xl font-serif font-bold text-white tracking-wide">
+            為什麼將流行歌曲與經典國文課文深度熔鑄？
+          </h3>
+          <p class="text-xs sm:text-sm text-orange-100/95 mt-2 leading-relaxed max-w-4xl">
+            音樂是情感最直接的載體，文學是思想最深刻的沉澱。「歌SONG國文」平台打破傳統字詞背誦的枯燥藩籬，藉由歌詞精準挖洞激發專注聽音辨義，透過黑膠動態操作建立沉浸意境，再以教用螢光筆引導學生提煉核心主旨，打造全方位跨界的情感共鳴與語文素養。
+          </p>
+        </div>
+
+        <div class="pt-5 border-t border-white/20 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <!-- Feature 1: 向量精準挖洞 -->
+          <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 hover:bg-white/15 transition-all">
+            <div class="w-10 h-10 rounded-xl bg-orange-500/30 border border-orange-400/40 text-amber-200 flex items-center justify-center text-lg shrink-0 shadow-inner">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-serif font-bold text-white">向量精準挖洞</h4>
+              <p class="text-xs text-orange-100/80 mt-1 leading-relaxed">
+                100% 依原紙本學習單位置向量挖洞，未挖洞處原汁原味，不擅自增刪。
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature 2: 教用螢光筆關鍵句 -->
+          <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 hover:bg-white/15 transition-all">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/30 border border-amber-400/40 text-amber-200 flex items-center justify-center text-lg shrink-0 shadow-inner">
+              <i class="fa-solid fa-highlighter"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-serif font-bold text-white">教用螢光筆關鍵句</h4>
+              <p class="text-xs text-orange-100/80 mt-1 leading-relaxed">
+                自動提取教用版最後一頁螢光筆高亮重點，一鍵展開核心意境解答。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <!-- ==================== FLOATING JUMP NAV DOCK ==================== -->
-  <aside class="fixed bottom-6 right-6 z-40 flex flex-col gap-2">
-    <!-- Back to top -->
+  <!-- Floating Action Buttons -->
+  <aside class="fixed bottom-6 right-6 z-40 flex flex-col gap-2.5">
+    <a href="../index.html" class="w-10 h-10 rounded-full bg-orange-600 text-white hover:bg-orange-700 shadow-md flex items-center justify-center text-sm transition-all hover:scale-105 active:scale-95" title="回到一～六冊總目錄">
+      <i class="fa-solid fa-house"></i>
+    </a>
     <a href="#hero" class="w-10 h-10 rounded-full bg-white text-slate-700 hover:text-orange-600 hover:bg-orange-50 border border-slate-200 shadow-md flex items-center justify-center text-sm transition-all hover:scale-105 active:scale-95" title="回到頂端">
       <i class="fa-solid fa-arrow-up"></i>
     </a>
   </aside>
 
-  <!-- ==================== FOOTER (Strict Brand Spec) ==================== -->
-  <footer class="bg-slate-100 text-slate-600 py-6 border-t border-slate-200 mt-12">
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-100 text-slate-600 py-6 border-t border-slate-200 mt-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <!-- Left: Stamp & Brand Title & Slogan -->
         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3 text-center sm:text-left">
-          <!-- 方形紅印 SSS_Stamp02.png (維持純方形，嚴禁 rounded-full) -->
-          <img src="assets/SSS_Stamp02.png" alt="學思軒" class="w-8 h-8 object-contain shadow-xs">
+          <img src="assets/SSS_Stamp02.png" onerror="this.onerror=null; this.src='../assets/SSS_Stamp02.png';" alt="學思軒" class="w-8 h-8 object-contain shadow-xs">
           <span class="font-serif font-bold text-slate-800 text-sm sm:text-base">八上國文寶典・歌SONG國文</span>
           <span class="hidden sm:inline text-slate-300">|</span>
-          <span class="text-xs text-slate-500 font-medium">國文第三冊全課好歌互動教學總目錄</span>
+          <span class="text-xs text-slate-500 font-medium">國文第三冊每課好歌互動教學總目錄</span>
         </div>
-        <!-- Right: Copyright Statement -->
         <div class="text-xs text-slate-500 font-medium text-center sm:text-right">
           © 2026 學思軒 &gt;&lt;&gt; &gt;&lt;&gt; &gt;&lt;&gt; •••本網頁由黃于珊老師與AI協作生成，僅供教學使用。•••&lt;&gt;&lt; &lt;&gt;&lt; &lt;&gt;&lt;
         </div>
@@ -1025,110 +923,94 @@
 
   <!-- ==================== SCRIPT ==================== -->
   <script>
-    let currentFilter = 'all';
+    let currentFilter = "all";
 
     function filterLessons(lessonId) {
       currentFilter = lessonId;
-      
-      // Update Buttons UI
-      const buttons = document.querySelectorAll('.filter-btn');
+      const buttons = document.querySelectorAll(".filter-btn");
       buttons.forEach(btn => {
-        if (btn.getAttribute('data-filter') === lessonId) {
-          btn.className = 'filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-orange-600 text-white shadow-xs';
+        if (btn.getAttribute("data-filter") === lessonId) {
+          btn.className = "filter-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-orange-600 text-white shadow-xs cursor-pointer";
         } else {
-          btn.className = 'filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200';
+          btn.className = "filter-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer";
         }
       });
-
       applyFilters();
     }
 
     function handleSearch() {
-      const input = document.getElementById('searchInput');
-      const clearBtn = document.getElementById('clearSearchBtn');
+      const input = document.getElementById("searchInput");
+      const clearBtn = document.getElementById("clearSearchBtn");
       if (input.value.trim().length > 0) {
-        clearBtn.classList.remove('hidden');
+        clearBtn.classList.remove("hidden");
       } else {
-        clearBtn.classList.add('hidden');
+        clearBtn.classList.add("hidden");
       }
       applyFilters();
     }
 
     function clearSearch() {
-      const input = document.getElementById('searchInput');
-      input.value = '';
-      document.getElementById('clearSearchBtn').classList.add('hidden');
+      const input = document.getElementById("searchInput");
+      input.value = "";
+      document.getElementById("clearSearchBtn").classList.add("hidden");
       applyFilters();
     }
 
     function applyFilters() {
-      const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const sections = document.querySelectorAll('.lesson-section');
+      const query = document.getElementById("searchInput").value.trim().toLowerCase();
+      const sections = document.querySelectorAll(".lesson-section");
       let visibleSongsTotal = 0;
       let visibleLessonsCount = 0;
 
       sections.forEach(sec => {
-        const lessonId = sec.getAttribute('data-lesson-id');
-        const lessonName = (sec.getAttribute('data-lesson-name') || '').toLowerCase();
-        const author = (sec.getAttribute('data-author') || '').toLowerCase();
-        const songCards = sec.querySelectorAll('.song-card');
+        const lessonId = sec.getAttribute("data-lesson-id");
+        const lessonName = (sec.getAttribute("data-lesson-name") || "").toLowerCase();
+        const author = (sec.getAttribute("data-author") || "").toLowerCase();
+        const songCards = sec.querySelectorAll(".song-card");
         
-        let lessonMatchesFilter = (currentFilter === 'all' || currentFilter === lessonId);
+        let lessonMatchesFilter = (currentFilter === "all" || currentFilter === lessonId);
         let visibleSongsInLesson = 0;
 
         songCards.forEach(card => {
-          const title = (card.getAttribute('data-title') || '').toLowerCase();
-          const artist = (card.getAttribute('data-artist') || '').toLowerCase();
-          const tag = (card.getAttribute('data-tag') || '').toLowerCase();
+          const title = (card.getAttribute("data-title") || "").toLowerCase();
+          const artist = (card.getAttribute("data-artist") || "").toLowerCase();
+          const tag = (card.getAttribute("data-tag") || "").toLowerCase();
 
-          const matchesSearch = !query || 
-            title.includes(query) || 
-            artist.includes(query) || 
+          const matchesSearch = !query ||
+            title.includes(query) ||
+            artist.includes(query) ||
             tag.includes(query) ||
             lessonName.includes(query) ||
             author.includes(query);
 
           if (lessonMatchesFilter && matchesSearch) {
-            card.classList.remove('hidden');
+            card.classList.remove("hidden");
             visibleSongsInLesson++;
             visibleSongsTotal++;
           } else {
-            card.classList.add('hidden');
+            card.classList.add("hidden");
           }
         });
 
         if (visibleSongsInLesson > 0) {
-          sec.classList.remove('hidden');
+          sec.classList.remove("hidden");
           visibleLessonsCount++;
         } else {
-          sec.classList.add('hidden');
+          sec.classList.add("hidden");
         }
       });
 
-      // Update Summary Text
-      const filterLabelMap = {
-        'all': '全部課次',
-        'L01': '第 01 課 田園之秋選',
-        'L02': '第 02 課 古詩選',
-        'L03': '第 03 課 下雨天真好',
-        'L04': '第 04 課 愛蓮說',
-        'L05': '第 05 課 生命中的碎珠',
-        'L06': '第 06 課 鳥'
-      };
-      
-      const label = filterLabelMap[currentFilter] || '全部課次';
-      document.getElementById('currentFilterLabel').textContent = query ? `${label} (搜尋: "${query}")` : label;
-      document.getElementById('songCountDisplay').textContent = visibleSongsTotal;
+      let label = (currentFilter === "all") ? "全部課次" : currentFilter;
+      document.getElementById("currentFilterLabel").textContent = query ? `${label} (搜尋: "${query}")` : label;
+      document.getElementById("songCountDisplay").textContent = visibleSongsTotal;
 
-      // Handle No Results Box
-      const noResultsBox = document.getElementById('noResults');
+      const noResultsBox = document.getElementById("noResults");
       if (visibleLessonsCount === 0) {
-        noResultsBox.classList.remove('hidden');
+        noResultsBox.classList.remove("hidden");
       } else {
-        noResultsBox.classList.add('hidden');
+        noResultsBox.classList.add("hidden");
       }
     }
   </script>
-
 </body>
 </html>

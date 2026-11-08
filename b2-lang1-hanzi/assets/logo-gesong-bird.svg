@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="360" height="80" fill="none">
+  <defs>
+    <linearGradient id="gradText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <linearGradient id="gradBird" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#e0e7ff" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#a855f7" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Bird Wing & Musical Note Icon -->
+  <g transform="translate(10, 8)" filter="url(#glow)">
+    <!-- Flying Bird Silhouette -->
+    <path d="M15,42 C22,34 32,24 48,22 C42,28 38,36 34,44 C42,40 52,38 60,39 C50,44 42,50 36,58 C32,48 24,44 15,42 Z" fill="url(#gradBird)" opacity="0.95"/>
+    <!-- Musical Note -->
+    <circle cx="20" cy="56" r="5" fill="#38bdf8"/>
+    <path d="M25,56 L25,32 C25,32 35,28 42,34" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Main Title: 歌SONG國文 -->
+  <text x="82" y="44" font-family="'Noto Serif TC', 'Songti TC', serif" font-size="34" font-weight="900" fill="url(#gradText)" letter-spacing="1.5">
+    歌SONG國文
+  </text>
+
+  <!-- Capsule Badge: B3L06・鳥 -->
+  <rect x="290" y="24" width="62" height="22" rx="11" fill="#4c1d95" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="321" y="39" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="700" fill="#f5f3ff" text-anchor="middle">
+    L06・鳥
+  </text>
+
+  <!-- Subtitle -->
+  <text x="84" y="64" font-family="'Noto Sans TC', sans-serif" font-size="11" font-weight="500" fill="#cbd5e1" letter-spacing="0.5">
+    聆聽羽翼之歌・穿梭旋律與鳥鳴的文學想像
+  </text>
+</svg>
