@@ -1,4 +1,4 @@
-import os, shutil, json
+﻿import os, shutil, json
 
 BASE_DIR = r"C:\2026_歌SONG國文"
 TARGET_DIR = os.path.join(BASE_DIR, "B02L08摩登土產鳳梨酥好歌")
@@ -147,7 +147,7 @@ def generate_html(default_song_id):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>【七下閱思龍門】歌SONG國文・L08 摩登土產鳳梨酥 好歌互動教學平台</title>
+  <title>【歌SONG國文】L08 摩登土產鳳梨酥 好歌互動教學平台</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->

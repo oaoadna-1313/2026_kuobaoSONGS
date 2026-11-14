@@ -1,4 +1,4 @@
-import os
+﻿import os
 import json
 
 songsData = [
@@ -150,7 +150,7 @@ def build_html(default_song_id='ailian-shuo'):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>【八上閱思龍門】歌SONG國文・L04 愛蓮說 好歌互動教學平台</title>
+  <title>【歌SONG國文】L04 愛蓮說 好歌互動教學平台</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->

@@ -1,4 +1,4 @@
-import os
+﻿import os
 import json
 
 songsData = [
@@ -113,7 +113,7 @@ def build_page_html(default_song_id='crazy-world'):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>【七下閱思龍門】歌SONG國文・自學一 六朝志怪小說選 好歌互動教學平台</title>
+  <title>【歌SONG國文】自學一 六朝志怪小說選 好歌互動教學平台</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->

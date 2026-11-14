@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 import shutil
 import json
@@ -157,7 +157,7 @@ def build_page_html(default_song_id="cang-jie"):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>【八下閱思龍門】歌SONG國文・語一 漢字的結構 好歌互動教學平台</title>
+  <title>【歌SONG國文】語一 漢字的結構 好歌互動教學平台</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->
